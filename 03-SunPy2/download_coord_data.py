@@ -16,4 +16,4 @@ wave = a.Wave(30 * u.nm, 31 * u.nm)
 
 results = vc.query(stereo | aia, wave)
 
-vc.get(results).wait(progress=True)
+vc.get(results, path='./03-SunPy2/data/{file}').wait(progress=True)
