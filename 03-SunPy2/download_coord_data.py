@@ -1,10 +1,8 @@
-from sunpy.net.vso import VSOClient, attrs as a
-
 import astropy.units as u
+from sunpy.net import Fido
+from sunpy.net import attrs as a
 
-vc = VSOClient()
-
-stereo = (a.Source('STEREO_B') &
+stereo = (a.vso.Source('STEREO_B') &
           a.Instrument('EUVI') &
           a.Time('2011-01-01', '2011-01-01T00:10:00'))
 
@@ -12,8 +10,9 @@ aia = (a.Instrument('AIA') &
        a.Sample(24 * u.hour) &
        a.Time('2011-01-01', '2011-01-02'))
 
-wave = a.Wave(30 * u.nm, 31 * u.nm)
+wave = a.Wavelength(30 * u.nm, 31 * u.nm)
 
-results = vc.query(stereo | aia, wave)
+results = Fido.search(aia | stereo, wave)
 
-vc.get(results, path='./03-SunPy2/data/{file}').wait(progress=True)
+res = Fido.fetch(results, path='./03-SunPy2/data/{file}')
+
