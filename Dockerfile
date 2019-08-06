@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM andrewosh/binder-base
 
 ARG NB_USER=jovyan
 ARG NB_UID=1000
