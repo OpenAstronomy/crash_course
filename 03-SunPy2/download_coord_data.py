@@ -14,5 +14,5 @@ wave = a.Wavelength(30 * u.nm, 31 * u.nm)
 
 results = Fido.search(aia | stereo, wave)
 
-res = Fido.fetch(results, path='./03-SunPy2/data/{file}')
+res = Fido.fetch(results, path='./data/{file}')
 
