@@ -13,7 +13,7 @@ RUN adduser --disabled-password \
 
 RUN pip3 install --upgrade pip
 RUN pip3 install --no-cache-dir notebook==5.*
-RUN pip3 install sunpy
+RUN pip3 install gcc sunpy[all]
 
 RUN python -c "import sunpy.data; sunpy.data.download_sample_data()"
 RUN python ./03-SunPy2/download_coord_data.py
